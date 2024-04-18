@@ -9,19 +9,36 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+  // Check if the array is empty or has only one element
+  if (arr.length <= 1) {
+    return -Infinity;
+  }
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
+  // Remove duplicates from the array using a Set
+  const uniqueArr = [...new Set(arr)];
+
+  // Check if all elements are the same
+  if (uniqueArr.length === 1) {
+    return -Infinity;
+  }
+
+  // Sort the array in descending order
+  uniqueArr.sort((a, b) => b - a);
+
+  // Return the second element (second highest)
+  return uniqueArr[1];
+}
+
+function Main() {
+  var n = prompt("Enter the number of elements");
+  var arr = [];
+  for (var i = 0; i < n; i++) {
+    arr[i] = parseInt(prompt("Enter element " + (i+1))); // Parse input as integers
+  }
+  alert(secondHighest(arr));
+}
+Main();
+
 	</script>
 
     <script type="text/javascript" src="./script.js">
